@@ -243,6 +243,12 @@ if ($webhook->verifySignature($payload, $signature)) {
             $transaction = $event['data']['transaction'];
             echo "Payment expired: " . $transaction['reference_id'];
             break;
+
+        case 'system.health_check':
+            // Handle health check
+            $message = $event['data']['message'];
+            echo "Health check received: " . $message;
+            break;
     }
 } else {
     http_response_code(400);

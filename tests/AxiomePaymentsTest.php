@@ -17,7 +17,7 @@ class AxiomePaymentsTest extends TestCase
         ];
 
         $axiomepayments = new AxiomePayments($config);
-
+        
         $this->assertInstanceOf(AxiomePayments::class, $axiomepayments);
         $this->assertEquals('sandbox', $axiomepayments->getConfig('environment'));
         $this->assertEquals('https://sandbox-api.axiomepayments.com/v1.0', $axiomepayments->getConfig('base_url'));
@@ -32,7 +32,7 @@ class AxiomePaymentsTest extends TestCase
         ];
 
         $axiomepayments = new AxiomePayments($config);
-
+        
         $this->assertEquals('https://api.axiomepayments.com/v1.0', $axiomepayments->getConfig('base_url'));
     }
 
@@ -106,4 +106,4 @@ class AxiomePaymentsTest extends TestCase
 
         $axiomepayments->unknown;
     }
-} 
+}

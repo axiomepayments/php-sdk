@@ -52,6 +52,10 @@ try {
         case 'payment_intent.expired':
             handlePaymentIntentExpired($eventData);
             break;
+
+        case 'system.health_check':
+            handleHealthCheck($eventData);
+            break;
             
         default:
             error_log("Unknown webhook event type: {$eventType}");
@@ -217,4 +221,15 @@ function handlePaymentIntentExpired(array $eventData): void
     // Example cleanup (pseudo-code)
     // cleanupExpiredOrder($referenceId);
     // releaseInventory($referenceId);
+}
+
+/**
+ * Handle health check event
+ */
+function handleHealthCheck(array $eventData): void
+{
+    $message = $eventData['message'] ?? 'No message';
+    $salesChannelId = $eventData['sales_channel_id'] ?? 'Unknown';
+
+    echo "Received health check from Sales Channel {$salesChannelId}: {$message}\n";
 }
