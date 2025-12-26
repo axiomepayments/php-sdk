@@ -190,4 +190,15 @@ class Webhook
     {
         return $this->getEventType($payload) === 'payment_intent.processing';
     }
+
+    /**
+     * Check if webhook event is a system health check
+     *
+     * @param array $payload Parsed webhook payload
+     * @return bool
+     */
+    public function isSystemHealthCheck(array $payload): bool
+    {
+        return $this->getEventType($payload) === 'system.health_check';
+    }
 } 
